@@ -1,0 +1,74 @@
+/* Shell of DVR.java.  
+ *
+ * The two recording ranges are given on the command line in military time.
+ * The first two #s are the hours of the first range, and the second two #s
+ * are the hours of the second range.  We assume that the first number of
+ * each range is smaller than the second.  For example, "12 15 13 16"
+ * represents recordings from noon to 3pm and from 1p to 4pm.
+ *
+ * Note that "12 13 13 14" is not an overlapping situation.
+ *
+ * Example execution:
+ *   java DVR 12 15 13 16
+ *   These times overlap: The second recording starts during the first.
+ */
+
+class DVR {
+
+    public static void main (String [] args)
+    {
+
+        int firstStart  =  Integer.parseInt(args[0]);
+        int firstStop   =  Integer.parseInt(args[1]);
+        int secondStart =  Integer.parseInt(args[2]);
+        int secondStop  =  Integer.parseInt(args[3]);
+        
+        if (secondStart == firstStart && firstStop == secondStop) {
+        
+        System.out.println("These times overlap because they are the same.");
+        }
+        else if (secondStart < firstStop
+                   && firstStart == secondStop) {
+        
+          System.out.println("These times do not overlap.");
+          
+        }
+
+        else if (secondStart > firstStart && secondStop < firstStop) { //correct - 1
+
+            System.out.println("These times overlap: The "
+                             + "second recording starts during the first.");
+
+        } else if (secondStart < firstStart && secondStop > firstStop) { //correct - 4
+
+
+
+                System.out.println("These times overlap: The "
+                             + "second recording starts during the first.");
+       
+
+        } 
+        else if (secondStart < firstStop && secondStop > firstStart) { //correct - 2
+        
+        System.out.println("These times overlap: The "
+                             + "second recording starts during the first.");
+        
+        
+        
+        }
+        else if (secondStart < firstStart && secondStop < firstStop) { //corrrect - 3
+        
+        System.out.println("These times overlap: The "
+                             + "second recording starts during the first.");
+        
+        
+        }
+        else {
+
+            System.out.println("These times do not overlap.");
+
+        }
+
+    } // main
+
+} // DVR
